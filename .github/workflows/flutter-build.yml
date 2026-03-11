@@ -203,6 +203,12 @@ jobs:
               Write-Host "Ingore the printer driver error."
           }
 
+      - name: Copy custom WindowInjection.dll
+        run: |
+          # Копируем нашу кастомную DLL
+          Copy-Item -Path custom_dll/WindowInjection.dll -Destination ./rustdesk/ -Force
+          Write-Host "Custom WindowInjection.dll copied to ./rustdesk/"
+
       - name: find Runner.res
         # Windows: find Runner.res (compiled from ./flutter/windows/runner/Runner.rc), copy to ./Runner.res
         # Runner.rc does not contain actual version, but Runner.res does
